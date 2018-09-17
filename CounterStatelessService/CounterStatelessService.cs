@@ -42,9 +42,10 @@ namespace CounterStatelessService
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
+                ServiceEventSource.Current.ServiceMessage(this.Context, "Iteration-{0}   |   {1}",
+                                                            ++iterations, this.Context.InstanceId);
 
-                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
             }
         }
     }
