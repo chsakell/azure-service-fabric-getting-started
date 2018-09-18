@@ -49,12 +49,12 @@ namespace CounterStatefulService
 
                 using (var tx = this.StateManager.CreateTransaction())
                 {
-                    var result = await counterDictionary.TryGetValueAsync(tx, "Counter");
+                    var result = await counterDictionary.TryGetValueAsync(tx, "iteration");
 
                     ServiceEventSource.Current.ServiceMessage(this.Context, "Iteration-{0}   |   {1}",
                         (result.HasValue ? result.Value.ToString() : "Value does not exist."), this.Context.ReplicaOrInstanceId);
 
-                    await counterDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);
+                    await counterDictionary.AddOrUpdateAsync(tx, "iteration", 0, (key, value) => ++value);
 
                     // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
                     // discarded, and nothing is saved to the secondary replicas.

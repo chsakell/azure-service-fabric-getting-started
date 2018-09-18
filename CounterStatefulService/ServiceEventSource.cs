@@ -9,7 +9,7 @@ using Microsoft.ServiceFabric.Services.Runtime;
 
 namespace CounterStatefulService
 {
-    [EventSource(Name = "MyCompany-CounterApplication-CounterStatefulService")]
+    [EventSource(Name = "CounterApplication-CounterStatefulService")]
     internal sealed class ServiceEventSource : EventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();
