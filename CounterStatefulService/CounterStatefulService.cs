@@ -38,9 +38,6 @@ namespace CounterStatefulService
         /// <param name="cancellationToken">Canceled when Service Fabric needs to shut down this service replica.</param>
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            // TODO: Replace the following sample code with your own logic 
-            //       or remove this RunAsync override if it's not needed in your service.
-
             var counterDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("counter");
 
             while (true)
